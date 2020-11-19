@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title ><ion-icon class="title-icon" name="school-sharp"></ion-icon>
+
+      Enter Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header color="secondary"> 
+     <ion-card-subtitle>Enter session details</ion-card-subtitle>
+     
+    </ion-card-header>
+    <form (ngSubmit)="save()">
+      <ion-item>
+        <ion-label>Club Name</ion-label>
+        <ion-input [(ngModel)]="item.clubName" name="clubName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Title of the session</ion-label>
+        <ion-input [(ngModel)]="item.title" name="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Speaker</ion-label>
+        <ion-input [(ngModel)]="item.speaker" name="speaker"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD MM YYYY" CancelText = "Cancel" [(ngModel)]="item.date" name="date"></ion-datetime>
+        <!--ion-input [(ngModel)]="item.date" name="date"></ion-input-->
+      </ion-item>
+      <ion-item>
+        <ion-label>Start Time</ion-label>
+         <ion-datetime [(ngModel)]="item.startTime" name="startTime" display-format="h:mm" picker-format="h:mm A" ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>End Time</ion-label>
+         <ion-datetime [(ngModel)]="item.endTime" name="endTime" display-format="h:mm" picker-format="h:mm A" ></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Online app</ion-label>
+        <ion-input [(ngModel)]="item.app" name="app"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Meeting link</ion-label>
+        <ion-input [(ngModel)]="item.meetinglink" name="meetinglink"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Facebook link</ion-label>
+        <ion-input [(ngModel)]="item.facebooklink" name="facebooklink"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone Number</ion-label>
+        <ion-input [(ngModel)]="item.phoneNumber" name="phoneNumber"></ion-input>
+      </ion-item>
+      <!--ion-item>
+        <ion-label floating>Speaker URL</ion-label>
+        <ion-button color="primary">
+        <input color="black" [(ngModel)]="newSession.speakerPhotoUrl" id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" />
+      </ion-button>
+      </ion-item-->
+    <ion-item>
+    <ion-button *ngIf="item.meetinglink!=undefined
+    && item.title!=undefined
+    && item.speaker!=undefined
+    && item.date!=undefined" expand="block" type="submit" block>Save</ion-button>
+    <ion-button  expand="block" (click)="cancel()" block>Close</ion-button>
+    </ion-item>
+  </form>
+</ion-card>
+</ion-content>
+ 

@@ -1,0 +1,22 @@
+<ion-header class="md" >
+  <ion-toolbar>
+    <ion-title>TCS Titanss</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+<ion-card>
+<div style="display: block;" *ngIf="chartReady">
+  <canvas baseChart width="400" height="400"
+  [datasets]="chartData" 
+  [labels]="chartLabels" 
+  [options]="chartOptions" 
+  [colors]="chartColors"
+  [legend]="showLegend" 
+  [chartType]="chartType">
+  </canvas>
+</div>
+</ion-card>
+</ion-content>

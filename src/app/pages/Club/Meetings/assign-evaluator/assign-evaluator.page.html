@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Assign Evaluator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <iot-item>
+    <ion-select placeholder="Select" [(ngModel)]="selectedEvaluator">
+      <ion-select-option *ngFor="let item of evaluatorList" [value] = "item">{{item.Name}}</ion-select-option>
+    </ion-select>
+  </iot-item>
+  <ion-item>
+    <ion-button  expand="block" (click)="mapEvaluator()" type="submit" block>Save</ion-button>
+    <ion-button  expand="block" (click)="cancel()" block>Cancel</ion-button>
+    </ion-item>
+</ion-content>

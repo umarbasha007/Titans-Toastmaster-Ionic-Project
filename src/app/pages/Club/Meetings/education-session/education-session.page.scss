@@ -1,0 +1,49 @@
+.speaker { 
+    font-family: 'Montserrat';
+    font-size: 25px;
+    color:#772432;
+    font-weight: bold; 
+    position: relative;
+    text-align: center;
+ }
+ .clubName {
+    position: relative;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 25px;
+    color:#004165;
+    font-weight: bold;
+  }
+ 
+  .dateTime{
+    position: relative;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-size: 15px;
+    color:#004165;
+    font-weight: bold;
+  } 
+  .parent{
+    position: relative;
+ }
+
+ ion-list {
+    //border-top: 3px solid black;
+    border-top: 3px solid #004165;
+    border-bottom: 3px solid #004165;
+    border-left: 3px solid #004165;
+    border-right: 3px solid #004165;
+    box-shadow: 0 !important;
+ }
+
+ ion-row {
+    text-align: center;
+    }
+
+    ion-content.cards-bg {
+      background-color: #f4f4f7;
+    }
+    
+ion-card-header {
+      background-color: #004165;
+  }

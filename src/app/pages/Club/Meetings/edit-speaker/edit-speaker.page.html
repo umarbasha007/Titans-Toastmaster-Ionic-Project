@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Speech Details 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <ion-card>
+   <ion-card-header>
+    <ion-item>
+      <ion-avatar  *ngIf=" item.Name!=''">
+        <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+      </ion-avatar>
+      <ion-title>
+       {{ item.Name}}  
+      </ion-title>
+    </ion-item>
+   </ion-card-header>
+  <form (ngSubmit)="save()">
+   
+    
+    <ion-item>
+      <ion-label>Level</ion-label>
+      <ion-select placeholder="Select" [(ngModel)]="item.level" name="level">
+        <ion-select-option *ngFor="let level of LevelsList" [value] = "level">{{level+1}}</ion-select-option>
+      </ion-select>
+      <!--ion-input type="text" [(ngModel)]="item.pathWays" name="Pathways"></ion-input-->
+    </ion-item>
+    <ion-item>
+      <ion-label>Pathways</ion-label>
+      <ion-select placeholder="Select" [(ngModel)]="item.pathWays" name="Pathways" (ionChange)="setPath()">
+        <ion-select-option *ngFor="let path of pathwaysList" [value] = "user">{{path.toString().split("_").join(" ")}}</ion-select-option>
+      </ion-select>
+      <!--ion-input type="text" [(ngModel)]="item.pathWays" name="Pathways"></ion-input-->
+    </ion-item>
+    <ion-item>
+      <ion-label>Project</ion-label>
+      <ion-select placeholder="Select" [(ngModel)]="item.project" name="project" (ionChange)="setPathProject()">
+        <ion-select-option *ngFor="let project of projectList" [value] = "project">{{project.toString().split("_").join(" ")}}</ion-select-option>
+      </ion-select>
+      <!--ion-input type="text" [(ngModel)]="item.project" name="project"></ion-input-->
+    </ion-item>
+    <ion-item>
+      <ion-label>Speech Title</ion-label>
+      <ion-input [(ngModel)]="item.speechTitle" name="speechTitle"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-button  expand="block" type="submit" block>Save</ion-button>
+    <ion-button  expand="block" (click)="cancel()" block>Cancel</ion-button>
+    </ion-item>
+  </form>
+</ion-card>
+</ion-content>
+ 

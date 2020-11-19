@@ -1,0 +1,105 @@
+<ion-header class="md" >
+  <ion-toolbar>
+    <ion-title class="title-style"> <ion-icon class="title-icon" name="ribbon-sharp"></ion-icon> Voting</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="row">
+    <div class="col-lg-2 col-sm-1">
+      
+    </div>
+    <div class="col-lg-8 col-sm-10 col-12">
+      
+  <ion-item>
+    <ion-button fill="outline" size="small"  color="tertiary" shape="round"  *ngIf="isExcom()===true && meetingDetails.votingStatus==false" (click)="StartVoting()">Start Voting</ion-button>
+    <ion-button fill="outline" size="small"  color="tertiary" shape="round"  *ngIf="isExcom()===true && meetingDetails.votingStatus==true" (click)="StopVoting()">Stop Voting</ion-button>
+    <ion-button (click)="resetVoting()" *ngIf="isExcom()==true">Reset Voting</ion-button>
+    
+
+  </ion-item>
+  <h3 class="vote-text" *ngIf="isExcom()==true">Number of people voted: {{totalVotersCount}}</h3>
+  <ion-card>
+    <ion-card-header>Best Speaker</ion-card-header>
+    <ion-list *ngFor="let item of speakerList">
+      <ion-item>
+          <ion-icon color="success" (click)='voteforBestSpeaker(item)' name="hand-right-outline" slot="start" *ngIf="(votingS.myVotes.BestSpeaker ==='' ||votingS.myVotes.BestSpeaker === undefined) && meetingDetails.votingStatus==true"> </ion-icon>
+          <ion-avatar slot="start" *ngIf=" item.Name!=''">
+            <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+          </ion-avatar>
+        <ion-label >{{ item.Name }}</ion-label>
+        <ion-icon  color="success" name="checkmark-done-circle-sharp" slot="end"  *ngIf="votingS.myVotes.BestSpeaker ==item.UserID"></ion-icon>
+      </ion-item>
+    </ion-list> 
+    </ion-card>
+    <ion-card>
+      <ion-card-header>Best Evaluator</ion-card-header>
+      <ion-list *ngFor="let item of evaluatorList">
+        <ion-item>
+            <ion-icon color="success" (click)='voteforBestEvaluator(item)' name="hand-right-outline" slot="start" *ngIf="(votingS.myVotes.BestEvaluator ==='' ||votingS.myVotes.BestEvaluator === undefined) && meetingDetails.votingStatus==true"> </ion-icon>
+            <ion-avatar slot="start" *ngIf=" item.Name!=''">
+              <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+            </ion-avatar>
+          <ion-label >{{ item.Name }}</ion-label>
+          <ion-icon  color="success" name="checkmark-done-circle-sharp" slot="end"  *ngIf="votingS.myVotes.BestEvaluator ==item.UserID"></ion-icon>
+        </ion-item>
+      </ion-list> 
+    </ion-card>
+  <ion-card>
+    <ion-card-header>Best TT Speaker </ion-card-header>
+    <ion-list *ngFor="let item of tableTopicsList">
+      <ion-item>
+          <ion-icon color="success" (click)='voteforBestTTSpeaker(item)' name="hand-right-outline" slot="start" *ngIf="(votingS.myVotes.BestTTSpeaker ==''  ||votingS.myVotes.BestTTSpeaker === undefined) && meetingDetails.votingStatus==true" > </ion-icon>
+          <ion-avatar slot="start" *ngIf=" item.Name!=''">
+            <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+          </ion-avatar>
+        <ion-label >{{ item.Name }}</ion-label>
+        <ion-icon  color="success" name="checkmark-done-circle-sharp" slot="end"  *ngIf="votingS.myVotes.BestTTSpeaker ==item.UserID"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>Best Role Player</ion-card-header>
+    <ion-list  *ngFor="let item of this.meetingS.meetingRoles" >
+      <ion-item *ngIf="item.RoleID==1 || item.RoleID==2 || item.RoleID==3">
+        <ion-icon color="success" (click)='voteforBestRolePlayer(item)' name="hand-right-outline" slot="start" *ngIf="(votingS.myVotes.BestRolePlayer ==''  ||votingS.myVotes.BestRolePlayer === undefined) && meetingDetails.votingStatus==true " > </ion-icon>
+        <ion-avatar slot="start" *ngIf=" item.Name!=''">
+          <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+        </ion-avatar>
+      <ion-label color="primary" >{{ meetingRoleStr(item.RoleID) }} 
+      </ion-label>
+      <ion-label class="ion-text-wrap">{{ item.Name }}</ion-label>
+      <ion-icon  color="success" name="checkmark-done-circle-sharp" slot="end"  *ngIf="votingS.myVotes.BestRolePlayer ==item.UserID"></ion-icon>
+    </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>Best TAG Player</ion-card-header>
+    <ion-list  *ngFor="let item of this.meetingS.meetingRoles" >
+      <ion-item *ngIf="item.RoleID==10 || item.RoleID==11 || item.RoleID==12">
+        <ion-icon color="success" (click)='voteforBestTAGPlayer(item)' name="hand-right-outline" slot="start" *ngIf="(votingS.myVotes.BestTAGPlayer ==''  ||votingS.myVotes.BestTAGPlayer === undefined) && meetingDetails.votingStatus==true " > </ion-icon>
+        <ion-avatar slot="start" *ngIf=" item.Name!=''">
+          <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+        </ion-avatar>
+      <ion-label color="primary" >{{ meetingRoleStr(item.RoleID) }} 
+      </ion-label>
+      <ion-label class="ion-text-wrap">{{ item.Name }}</ion-label>
+      <ion-icon  color="success" name="checkmark-done-circle-sharp" slot="end"  *ngIf="votingS.myVotes.BestTAGPlayer ==item.UserID"></ion-icon>
+    </ion-item>
+    </ion-list>
+  </ion-card>
+    </div>
+    <div class="col-lg-2 col-sm-1">
+      
+    </div>
+  </div>
+
+
+
+</ion-content>
+
+

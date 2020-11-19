@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Theme</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+     <ion-item>
+       <ion-avatar  *ngIf=" item.Name!=''">
+         <ion-img  src={{item.PhotoUrl}} >{{item.PhotoUrl}} </ion-img>
+       </ion-avatar>
+       <ion-title>
+        {{ item.Name}}  
+       </ion-title>
+     </ion-item>
+    </ion-card-header>
+   <form (ngSubmit)="save()">
+    
+     <ion-item>
+       <ion-label>Theme</ion-label>
+       <ion-input type="text" [(ngModel)]="meet.theme" name="theme"></ion-input>
+     </ion-item>
+     <ion-item>
+     <ion-button  expand="block" type="submit" block>Save</ion-button>
+     <ion-button  expand="block" (click)="cancel()" block>Cancel</ion-button>
+     </ion-item>
+   </form>
+ </ion-card>
+</ion-content>

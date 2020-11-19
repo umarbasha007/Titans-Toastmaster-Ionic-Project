@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  
+   <ion-title>TCS Maitree Titans TM Club</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <div class="col-lg-3 col-sm-1"></div>
+    <div class="col-lg-6 col-sm-10 col-12">
+      <ion-img src='./assets/pictures/toastmaster-logo.png' alt='Toastmaster logo' class='logo'></ion-img>
+  <ion-img [src]='imgsrc_login_banner'alt='Login banner' class='banner-img' ></ion-img>     
+  <form>
+    <ion-row>
+      <ion-col> 
+        <div class="topnav">
+        <ion-button 
+         type="submit" 
+         class='login-button'
+         color = 'danger'
+         (click)="authService.GoogleAuth()" 
+         expand="block">
+           Login with Google
+        </ion-button>
+      </div>
+      </ion-col>
+    </ion-row>
+  </form>
+    </div>
+    <div class="col-lg-3 col-sm-1"></div>
+  </div>
+  
+</ion-content>
+      

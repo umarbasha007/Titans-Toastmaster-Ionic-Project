@@ -1,0 +1,102 @@
+<ion-header class="md" >
+  <ion-toolbar>
+    <ion-title class="title-style"><ion-icon class="title-icon" name="trophy-sharp"></ion-icon>Awards</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+  <div class="row">
+    <div class="col-lg-2 col-sm-1"></div>
+    <div class="col-lg-8 col-sm-10 col-12">
+
+       <!--
+ <ion-card>
+    <ion-button (click)="takescreenshot('svg_speaker','assets/bestSpeaker.PNG')">Whatapp Share</ion-button>
+    <a [href]="himgsrc">Share on whatsapp</a>
+    <div id="png-container"></div>
+    <ion-img  id='imgResult' [src]='imgsrc |async' width='100px'  ></ion-img>
+  </ion-card>
+-->
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12"><ion-button class="button-style" (click)="resultsbackup()" *ngIf="isExcom()==true">Backup Results</ion-button></ion-col>
+      <ion-col size="12"><ion-button class="button-style" (click)="publishResults()" *ngIf="meetingDetails.votingStatus==false">Load Certificates</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  
+ 
+  <ion-card>
+      <ion-card-content id='speakeraward'>
+        <ion-img  id='imgS1'  width='100px'  [src]='imgsrc_best_speaker' ></ion-img>
+        <div class="floatTL">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                width="2000px" height="2000px" id='svg_speaker'>
+                      <text x="245" y="244" fill=" #004165" class="president-name" id='president'>{{president_1}} </text>
+                      <text x="245" y="244" fill=" #004165" class="meeting-date" id='meetingDate'>{{meetingDate_1}} </text>
+                      <text x="245" y="244" fill=" #004165" class="winner-name" id='bestSpeakerName'>{{bestSpeakerName}} </text>
+            </svg>    
+          </div>
+        </ion-card-content>
+  </ion-card>
+  <ion-card>
+      <ion-card-content id='evaluatoraward'>
+        <ion-img  id='imgS2' [src]='imgsrc_best_evaluator' width='100px'  ></ion-img>
+        <div class="floatTL">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                width="2000px" height="2000px" id='svg_evalutor'>
+                      <text x="245" y="244" fill="#004165"  class="president-name" id='president_2'>{{president_2}} </text>
+                      <text x="245" y="244" fill="#004165"  class="meeting-date" id='meetingDate_2'>{{meetingDate_2}} </text>
+                      <text x="245" y="244" fill="#004165"  class="winner-name" id='bestEvaluatorName'>{{bestEvaluatorName}} </text>
+            </svg>    
+          </div>
+        </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content id='ttaward'>
+      <ion-img  id='imgS3' [src]='imgsrc_best_tt' width='100px'  ></ion-img>
+      <div class="floatTL">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+              width="2000px" height="2000px" id='svg_tt'>
+                    <text x="245" y="244" fill="#004165"  class="president-name" id='president_3'>{{president_3}} </text>
+                    <text x="245" y="244" fill="#004165"  class="meeting-date" id='meetingDate_3'>{{meetingDate_3}} </text>
+                    <text x="245" y="244" fill="#004165"  class="winner-name" id='bestTTName'>{{bestTTName}} </text>
+          </svg>    
+        </div>
+      </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content id='roleplayeraward'>
+    <ion-img  id='imgS4' [src]='imgsrc_best_role' width='100px'  ></ion-img>
+    <div class="floatTL">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            width="2000px" height="2000px" id='svg_role'>
+                  <text x="245" y="244" fill="#004165"  class="president-name" id='president_4'>{{president_4}} </text>
+                  <text x="245" y="244" fill="#004165"  class="meeting-date" id='meetingDate_4'>{{meetingDate_4}} </text>
+                  <text x="245" y="244" fill="#004165"  class="winner-name" id='bestRolePlayer'>{{bestRolePlayer}} </text>
+        </svg>    
+      </div>
+    </ion-card-content>
+</ion-card>
+<ion-card>
+  <ion-card-content id='tagplayeraward'>
+    <ion-img  id='imgS5' [src]='imgsrc_best_tag' width='100px'  ></ion-img>
+    <div class="floatTL">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+            width="2000px" height="2000px" id='svg_tag'>
+                  <text x="245" y="244" fill="#004165"  class="president-name" id='president_5'>{{president_5}} </text>
+                  <text x="245" y="244" fill="#004165"  class="meeting-date" id='meetingDate_5'>{{meetingDate_5}} </text>
+                  <text x="245" y="244" fill="#004165"  class="winner-name" id='bestTAGPlayer'>{{bestTAGPlayer}} </text>
+        </svg>    
+      </div>
+    </ion-card-content>
+</ion-card>
+<canvas id="canvas" width="800" height="400"></canvas>
+    </div>
+    <div class="col-lg-2 col-sm-1"></div>
+  </div>
+ 
+</ion-content>

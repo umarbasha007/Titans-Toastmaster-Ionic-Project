@@ -1,0 +1,27 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - master
+    paths:
+     - 'src/**'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: 1//0gWQ256nf7W8pCgYIARAAGBASNwF-L9IrM2IqAZxJ0r6b5g1kkyyWveP7PrrxLX_zI6KdMP-aLY9MbYtFmWmp1JFJKooCznn-z5A
+          FIREBASE_PROJECT: wtn-login-7ffe2
+          TARGET_BRANCH: main

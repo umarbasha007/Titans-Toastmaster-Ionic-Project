@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Table Topic Speakers</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <ion-select placeholder="Choose Options" [(ngModel)]="selectedTTSpeaker" multiple="true" (ionChange)="addTTSpeakers()">
+        <ion-select-option *ngFor="let user of userList" [value] = "user">{{user.displayName}}</ion-select-option>
+      </ion-select>
+      <ion-item text-center>
+        <ion-button (click)="GoBack()">Close</ion-button>
+      </ion-item>
+</ion-content>

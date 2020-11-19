@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - mast
+
+jobs:
+  firebase-deploy:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '10.x'
+    - run: npm install ionic
+    - run: ionic build
+    - uses: w9jds/firebase-action@master
+      with:
+        args: firebase deploy --only hosting
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

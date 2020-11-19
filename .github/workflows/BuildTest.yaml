@@ -1,0 +1,29 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - MultiClub_Release
+    paths:
+     - 'src/**'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@MultiClub_Release
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: |
+             npm run build
+             firebase use staging --token 1//0gmo1jKoGOA-ICgYIARAAGBASNwF-L9IrkmQ6rVSrO6jBMhtVJWIZqyB7nOQXVPjCRtko6evmq3u5FOOSYUBoTPklVjGI01kcI7A
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@MultiClub_Release
+        with:
+          args: deploy 
+        env:
+          FIREBASE_TOKEN: 1//0gmo1jKoGOA-ICgYIARAAGBASNwF-L9IrkmQ6rVSrO6jBMhtVJWIZqyB7nOQXVPjCRtko6evmq3u5FOOSYUBoTPklVjGI01kcI7A
+          FIREBASE_PROJECT: walkietalkienaganallur-test
+          TARGET_BRANCH: main

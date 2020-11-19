@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Reassign to</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        Role : {{itemId.RoleName}}
+      </ion-col>
+      <ion-col>
+        <ion-select placeholder="Select" [(ngModel)]="selectedUser">
+          <ion-select-option *ngFor="let user of userList" [value] = "user">{{user.displayName}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button (click)="reassign()">Submit</ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button (click)="closeModal()">Close</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
